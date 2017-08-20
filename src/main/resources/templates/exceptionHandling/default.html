@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Handle Bad Input</title>
+  </head>
+  <body>
+    <form action="handleInteger"
+          method="post">
+      <input type="text"
+             name="probablyAnInteger"
+             placeholder="should be an integer, but...">
+      <button>Submit</button>
+      {{#integerResult}}
+         {{ integerResult }}
+      {{/integerResult}}
+    </form>
+    <form action="calculateReciprocal"
+          method="post">
+      <input type="text"
+             name="probablyANumber"
+             placeholder="should be a number, but...">
+      <button>Submit</button>
+      {{#reciprocalResult}}
+         {{ reciprocalResult }}
+      {{/reciprocalResult}}
+    </form>
+    <form action="handleDecimal"
+          method="post">
+      <input type="text"
+             name="probablyADecimal"
+             placeholder="should be a decimal, but...">
+      <button>Submit</button>
+      {{#decimalResult}}
+         {{ decimalResult }}
+      {{/decimalResult}}
+    </form>
+    <form action="/handleDate"
+          method="post">
+      <input type="text"
+             name="probablyADate"
+             placeholder="should be a date, but...">
+      <button>Submit</button>
+      {{#dateResult}}
+         {{ dateResult }}
+      {{/dateResult}}
+    </form>
+    <form action="/handleUrl"
+          method="post">
+      <input type="text"
+             name="probablyAUrl"
+             placeholder="should be a URL, but...">
+      <button>Submit</button>
+      {{#urlResult}}
+         <a href="{{ urlResult }}">{{ urlResult }}</a>
+      {{/urlResult}}
+      {{#urlFailure}}
+         {{ urlFailure }}
+      {{/urlFailure}}
+    </form>
+  </body>
+</html>
