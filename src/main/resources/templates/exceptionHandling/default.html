@@ -2,9 +2,22 @@
 <html>
   <head>
     <title>Handle Bad Input</title>
+    <style>
+      input { width: 50%; }
+    </style>
   </head>
   <body>
-    <form action="handleInteger"
+    <form action="/handleString"
+          method="post">
+      <input type="text"
+             name="probablySomeText"
+             placeholder="should be at least 4 characters, but...">
+      <button>Submit</button>
+      {{#stringResult}}
+         {{ stringResult }}
+      {{/stringResult}}
+    </form>
+    <form action="/handleInteger"
           method="post">
       <input type="text"
              name="probablyAnInteger"
@@ -14,17 +27,7 @@
          {{ integerResult }}
       {{/integerResult}}
     </form>
-    <form action="calculateReciprocal"
-          method="post">
-      <input type="text"
-             name="probablyANumber"
-             placeholder="should be a number, but...">
-      <button>Submit</button>
-      {{#reciprocalResult}}
-         {{ reciprocalResult }}
-      {{/reciprocalResult}}
-    </form>
-    <form action="handleDecimal"
+    <form action="/handleDecimal"
           method="post">
       <input type="text"
              name="probablyADecimal"
@@ -38,7 +41,7 @@
           method="post">
       <input type="text"
              name="probablyADate"
-             placeholder="should be a date, but...">
+             placeholder="should be a date (YYYY-MM-DD), but...">
       <button>Submit</button>
       {{#dateResult}}
          {{ dateResult }}
@@ -48,7 +51,7 @@
           method="post">
       <input type="text"
              name="probablyAUrl"
-             placeholder="should be a URL, but...">
+             placeholder="should be a URL (http://example.com), but...">
       <button>Submit</button>
       {{#urlResult}}
          <a href="{{ urlResult }}">{{ urlResult }}</a>

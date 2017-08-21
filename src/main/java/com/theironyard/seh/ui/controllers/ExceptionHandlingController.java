@@ -18,6 +18,17 @@ public class ExceptionHandlingController {
 		return "exceptionHandling/default";
 	}
 	
+	@PostMapping("/handleString")
+	public ModelAndView handleString(String probablySomeText) {
+		ModelAndView mv = new ModelAndView("exceptionHandling/default");
+		try {
+			mv.addObject("stringResult", probablySomeText.substring(4));
+		} catch (IndexOutOfBoundsException iobe) {
+			mv.addObject("stringResult", "string should be four characters");
+		}
+		return mv;
+	}
+	
 	@PostMapping("/handleUrl")
 	public ModelAndView handleUrl(String probablyAUrl) {
 		ModelAndView mv = new ModelAndView("exceptionHandling/default");
@@ -36,17 +47,6 @@ public class ExceptionHandlingController {
 			mv.addObject("integerResult", Integer.parseInt(probablyAnInteger));
 		} catch (NumberFormatException nfe) {
 			mv.addObject("integerResult", "not an integer");
-		}
-		return mv;
-	}
-	
-	@PostMapping("/calculateReciprocal")
-	public ModelAndView handleFile(String probablyANumber) {
-		ModelAndView mv = new ModelAndView("exceptionHandling/default");
-		try {
-			mv.addObject("reciprocalResult", 1 / Double.parseDouble(probablyANumber));
-		} catch (NumberFormatException nfe) {
-			mv.addObject("reciprocalResult", "Cannot calculate that");
 		}
 		return mv;
 	}
